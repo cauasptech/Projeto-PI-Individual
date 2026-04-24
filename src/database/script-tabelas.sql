@@ -6,9 +6,9 @@
 comandos para mysql server
 */
 
-CREATE DATABASE aquatech;
+CREATE DATABASE chuteBox;
 
-USE aquatech;
+USE chuteBox;
 
 CREATE TABLE empresa (
 	id INT PRIMARY KEY AUTO_INCREMENT,
