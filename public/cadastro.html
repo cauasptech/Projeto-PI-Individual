@@ -1,104 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CB | Cadastro</title>
 
-  <title>CB | Cadastro</title>
+    <script src="./js/sessao.js"></script>
 
-  <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css" />
+    <link rel="icon" href="./assets/icon/icone.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
 
-  <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/icone.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-</head>
-
-<body onload="listar()">
-  <!--header inicio-->
-  <div class="header">
-    <div class="container">
-      <h1 class="titulo">CHUTE BOXE ★</h1>
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Início</a>
-        </li>
-        <li>
-          <a href="simulador.html">Simulador</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--header fim-->
-
-  <div class="login">
-    <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
+  <body onload="listar()">
+    <!--header inicio-->
+    <div class="header">
+      <div class="container">
+        <h1 class="titulo">CHUTE BOXE ★</h1>
+        <ul class="navbar">
+          <li>
+            <a href="index.html">Início</a>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="login.html">Login</a>
+          </li>
+          <li class="agora">
+            <a href="#">Cadastro</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
+    <!--header fim-->
+
+    <div class="login">
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card card-cadastro">
+          <h2>Bem-vindo!</h2>
+          <div class="formulario">
+            <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
-          
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
-        </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
 
-        <div id="div_erros_login"></div>
+            <div class="campo">
+              <span>Nome:</span>
+              <input id="nome_input" type="text" placeholder="Seu nome" />
+            </div>
+            <div class="campo">
+              <span>E-mail:</span>
+              <input
+                id="email_input"
+                type="text"
+                placeholder="meuemail@provedor.com"
+              />
+            </div>
+            <div class="campo">
+              <span>Senha:</span>
+              <input id="senha_input" type="password" placeholder="******" />
+            </div>
+            <div class="campo">
+              <span>Confirmação da Senha:</span>
+              <input
+                id="confirmacao_senha_input"
+                type="password"
+                placeholder="******"
+              />
+            </div>
+            <div class="campo">
+              <span>Academia frequentada:</span>
+              <input
+                id="academia_input"
+                type="text"
+                placeholder="Deixe vazio caso treine em casa"
+              />
+            </div>
+            <span>Gênero:</span>
+            <div class="campo_radio">
+  <input class="input-radio" type="radio" id="id_masculino" name="genero" value="M">
+  <label for="id_masculino">
+    <div class="radio-btn"></div>
+    <span>Masculino</span>
+  </label>
+
+  <input class="input-radio" type="radio" id="id_feminino" name="genero" value="F">
+  <label for="id_feminino">
+    <div class="radio-btn"></div>
+    <span>Feminino</span>
+  </label>
+
+  <input class="input-radio" type="radio" id="id_outro" name="genero" value="O">
+  <label for="id_outro">
+    <div class="radio-btn"></div>
+    <span>Outro</span>
+  </label>
+</div>
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
+          </div>
+          <div id="div_aguardar" class="loading-div">
+            <img src="./assets/circle-loading.gif" id="loading-gif" />
+          </div>
+
+          <div id="div_erros_login"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>CHUTE BOXE, HEY &starf; SPTech &copy; 2026</h4>
+    <!--footer inicio-->
+    <div class="footer">
+      <div class="container">
+        <h4>CHUTE BOXE, HEY &starf; SPTech &copy; 2026</h4>
+      </div>
     </div>
-  </div>
-  <!--footer fim-->
-</body>
-
+    <!--footer fim-->
+  </body>
 </html>
 
 <script>
-
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  // Array para armazenar empresas cadastradas para validação de código de ativação
   let listaEmpresasCadastradas = [];
 
   function cadastrar() {
@@ -110,8 +136,8 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var academiaVar = academia_input.value;
+    var idEmpresaVincular;
 
     // Verificando se há algum campo em branco
     if (
@@ -134,7 +160,7 @@
     // Verificando se o código de ativação é de alguma empresa cadastrada
     for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
       if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
+        idEmpresaVincular = listaEmpresasCadastradas[i].id;
         console.log("Código de ativação válido.");
         break;
       } else {
@@ -156,7 +182,7 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        idEmpresaVincularServer: idEmpresaVincular,
       }),
     })
       .then(function (resposta) {
@@ -186,7 +212,7 @@
     return false;
   }
 
-  // Listando empresas cadastradas 
+  // Listando empresas cadastradas
   function listar() {
     fetch("/empresas/listar", {
       method: "GET",
@@ -196,8 +222,8 @@
           empresas.forEach((empresa) => {
             listaEmpresasCadastradas.push(empresa);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+            console.log("listaEmpresasCadastradas");
+            console.log(listaEmpresasCadastradas[0].codigo_ativacao);
           });
         });
       })

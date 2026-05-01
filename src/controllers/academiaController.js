@@ -1,9 +1,9 @@
-var empresaModel = require("../models/empresaModel");
+var empresaModel = require("../models/academiaModel");
 
-function buscarPorCnpj(req, res) {
-  var cnpj = req.query.cnpj;
+function buscarPorCep(req, res) {
+  var CEP = req.query.CEP;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
+  empresaModel.buscarPorCep(CEP).then((resultado) => {
     res.status(200).json(resultado);
   });
 }
@@ -23,16 +23,16 @@ function buscarPorId(req, res) {
 }
 
 function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
+  var CEP = req.body.CEP;
+  var nome = req.body.nome;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
+  empresaModel.buscarPorCep(CEP).then((resultado) => {
     if (resultado.length > 0) {
       res
         .status(401)
-        .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
+        .json({ mensagem: `a academia com o CEP ${CEP} já existe` });
     } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
+      empresaModel.cadastrar(nome, CEP).then((resultado) => {
         res.status(201).json(resultado);
       });
     }
@@ -40,7 +40,7 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarPorCnpj,
+  buscarPorCep,
   buscarPorId,
   cadastrar,
   listar,
