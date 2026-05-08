@@ -45,11 +45,6 @@
         <div class="card card-cadastro">
           <h2>Bem-vindo!</h2>
           <div class="formulario">
-            <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-
             <div class="campo">
               <span>Nome:</span>
               <input id="nome_input" type="text" placeholder="Seu nome" />
@@ -76,11 +71,9 @@
             </div>
             <div class="campo">
               <span>Academia frequentada:</span>
-              <input
-                id="academia_input"
-                type="text"
-                placeholder="Deixe vazio caso treine em casa"
-              />
+              <select id="academia_input">
+                <option value="">Treino em casa</option>
+              </select>
             </div>
             <span>Gênero:</span>
             <div class="campo_radio">
@@ -142,6 +135,26 @@
 </html>
 
 <script>
+
+  function listar() {
+    fetch("/academia/listar", {
+        method: "GET",
+    })
+    .then(function (resposta) {
+        resposta.json().then(function (academias) {
+            academias.forEach(function (academia) {
+                var option = document.createElement("option");
+                option.value = academia.nome;
+                option.text = academia.nome;
+                academia_input.appendChild(option);
+            });
+        });
+    })
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
   function cadastrar() {
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
